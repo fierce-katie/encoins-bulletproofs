@@ -81,8 +81,11 @@ instance Arbitrary GroupElement where
 
 {-# INLINABLE toGroupElement #-}
 toGroupElement :: BuiltinByteString -> Maybe GroupElement
+toGroupElement bs = Just $ GroupElement bs
+{-
 toGroupElement bs = bool Nothing (Just $ GroupElement bs) (bs == bs')
     where bs' = compressPoint $ decompressPoint bs
+-}
 
 {-# INLINABLE fromGroupElement #-}
 fromGroupElement :: GroupElement -> BuiltinByteString
